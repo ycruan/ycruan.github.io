@@ -11,9 +11,10 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* Ph.D in Electrical and Computer Engineering, Carnegie Mellon University, since 2018
+* M.S. in Systems Engineering, UC Berkeley, 2016 - 2017
+* B.S. in Civil Engineering, Tsinghua University, 2012 - 2016
+* Second Bachelor's Degree in Economics, Tsinghua University, 2014 - 2016
 
 Work experience
 ======

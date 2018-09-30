@@ -11,50 +11,26 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Electrical and Computer Engineering, Carnegie Mellon University, since 2018
+* Ph.D. in Electrical and Computer Engineering, Carnegie Mellon University, since 2018
 * M.S. in Systems Engineering, UC Berkeley, 2016 - 2017
 * B.S. in Civil Engineering, Tsinghua University, 2012 - 2016
 * Second Bachelor's Degree in Economics, Tsinghua University, 2014 - 2016
 
-Work experience
+Experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Fall 2017: Teaching Assistant
+  * UC Berkeley, CS
+  * Duties included: Grading homework, helping with office hours
+  * Course: CS170 Efficient Algorithms and Intractable Problems
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Summer 2015: Research Assistant
+  * Georgia Institute of Technology, CEE
+  * Duties included: FEM modeling, experiments, data analysis
+  * Advisor: [Prof. Yang Wang](http://wang.ce.gatech.edu/)
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
-<!--Publications-->
-<!--======-->
-  <!--<ul>{% for post in site.publications %}-->
-    <!--{% include archive-single-cv.html %}-->
-  <!--{% endfor %}</ul>-->
-  <!---->
-<!--Talks-->
-<!--======-->
-  <!--<ul>{% for post in site.talks %}-->
-    <!--{% include archive-single-talk-cv.html %}-->
-  <!--{% endfor %}</ul>-->
-  <!---->
-<!--Teaching-->
-<!--======-->
-  <!--<ul>{% for post in site.teaching %}-->
-    <!--{% include archive-single-cv.html %}-->
-  <!--{% endfor %}</ul>-->
-  <!---->
-<!--Service and leadership-->
-<!--======-->
-<!--* Currently signed in to 43 different slack teams-->
+* Programming Languages: C, C++, C#, Java, Python, SQL, JavaScript, Matlab
+* Parallel/Distributed Computing: Hadoop, Spark, OpenMP, Terraform
+* Machine Learning: PyTorch, Keras, SciKits, NumPy, Pandas, CVX
+* Others: Bash, Git, Maven, GDB, GNU Make, Postgres

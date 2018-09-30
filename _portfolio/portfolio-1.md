@@ -1,6 +1,6 @@
 ---
 title: "Resource Constrained Edge Machine Learning"
-excerpt: "Scalable distributed neural nets running on resource constrained IoT devices. <br/><img src='/images/projects_10701_pi.png', width='500', height='300'>"
+excerpt: "Scalable distributed neural nets running on resource constrained IoT devices. <br/><img src='/images/projects_10701_pi.png'>"
 collection: portfolio
 ---
 

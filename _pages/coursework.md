@@ -16,7 +16,7 @@ Systems
 * [CS61C: Great Ideas in Computer Architecture (Machine Structures)](http://inst.eecs.berkeley.edu/~cs61c/fa18/), UCB 2017
 * [CS162: Operating Systems and Systems Programming](https://cs162.eecs.berkeley.edu/), UCB 2017
 * [CS161: Computer Security](http://www-inst.eecs.berkeley.edu/~cs161/fa18/), UCB 2017
-* [CS168: Introduction to Database Systems](https://www.cs186berkeley.net/), UCB 2016
+* [CS286: Introduction to Database Systems](https://www.cs186berkeley.net/), UCB 2016
 
 Machine Learning
 ======

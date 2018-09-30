@@ -28,9 +28,11 @@ Experience
   * Duties included: FEM modeling, experiments, data analysis
   * Advisor: [Prof. Yang Wang](http://wang.ce.gatech.edu/)
 
+
 Publications
 ======
 * **Y. Ruan**, L. Zheng, M. Gorlatova, M. Chiang and C. Joe-Wong, The Economics of Fog Computing: Pricing Tradeoffs for Data Analytics, to appear in Fog and Fogonomics: Challenges and Practices of Fog Computing, Networking, Strategy and Economics, Wiley, 2018.
+
 
 Skills
 ======

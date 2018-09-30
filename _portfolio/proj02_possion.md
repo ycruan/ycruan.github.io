@@ -1,10 +1,13 @@
 ---
-title: "<b>#ML#</b> On the Intensity Estimation of Poisson Process"
+title: "[ML] On the Intensity Estimation of Poisson Process"
 excerpt: "<i>Poisson process plays a fundamental role in the theory and application of stochastic process. 
 However, the intensity estimation of inhomogeneous Poisson process remains difficult. In this project, we compare the 
 performance of three existing estimation methods: smoothing kernel method, Mercer kernel method, and Bayesian method.</i><br/><br/><img src='/images/projects_10702_eq.png'>"
 collection: portfolio
 ---
+
+On the Intensity Estimation of Poisson Process
+======
 
 Poisson process, homogeneous or inhomogeneous, plays a fundamental role in the theory and application of stochastic process. 
 However, the intensity estimation of inhomogeneous Poisson process remains difficult. 

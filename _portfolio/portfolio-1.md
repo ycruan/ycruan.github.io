@@ -1,6 +1,7 @@
 ---
-title: "Resource Constrained Edge Machine Learning"
-excerpt: "Scalable distributed neural nets running on resource constrained IoT devices. <br/><img src='/images/projects_10701_pi.png'>"
+title: "Edge Machine Learning for Resource-constrained IoT Devices"
+excerpt: "In this project, we proposed an edge computing solution that enables distributed machine learning on resource constrained IoT devices. 
+A scalable algorithm is designed to automatically dispatch neural nets to edge devices. The framework was tested on Raspberry Pis for image classification tasks.<br/><img src='/images/projects_10701_pi.png'>"
 collection: portfolio
 ---
 

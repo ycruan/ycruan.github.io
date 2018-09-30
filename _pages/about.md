@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my site!
+Welcome to my homepage!
 ======
 
 My name is Yichen Ruan, people also call me Ethan. I am currently a Ph.D. student in the [LIONS](https://www.andrew.cmu.edu/user/cjoewong/) 
@@ -23,5 +23,5 @@ where I earned my Bachelor's degree in Civil Engineering, and the second Bachelo
 News
 ======
 <span style="color:red">[09-2018] I am looking for intern positions for summer 2019.</span><br />
-[08-2018] The LIONS group moved to the SV campus. #SeeYouPittsburgh#<br />
+[08-2018] The LIONS group moved to the SV campus. #ByePittsburgh#<br />
 [06-2018] I presented at the poster session of the [ACM SIGMETRICS](https://www.sigmetrics.org/sigmetrics2018/) conference in Irvine, CA.

@@ -7,10 +7,10 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Yichen Ruan (Ethan)"
+title                    : "@Yichen Ruan"
 title_separator          : "-"
 name                     : &name "Yichen Ruan (Ethan)"
-description              : &description "PhD Student at ECE, CMU"
+description              : &description "PhD student in ECE at CMU"
 url                      : https://ycruan.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ycruan.github.io"
@@ -81,7 +81,7 @@ analytics:
 author:
   name             : "Yichen Ruan (Ethan)"
   avatar           : "profile.png"
-  bio              : "Ph.D. Student at ECE, CMU"
+  bio              : "Ph.D. student in ECE at CMU"
   location         : "Silicon Valley"
   employer         :
   googlescholar    :

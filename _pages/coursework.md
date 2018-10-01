@@ -8,7 +8,7 @@ author_profile: true
 Theory
 ======
 * [CS170: Efficient Algorithms and Intractable Problems](https://cs170.org/), UCB 2016
-* [15-853: Algorithms in the "Real World"](http://www.cs.cmu.edu/afs/cs/project/pscico-guyb/realworld/www/indexS18.html), CMU, 2018
+* [15-853: Algorithms in the "Real World"](http://www.cs.cmu.edu/afs/cs/project/pscico-guyb/realworld/www/indexS18.html), CMU 2018
 * [EE227BT: Convex Optimization](https://people.eecs.berkeley.edu/~sojoudi/Course_EE227BT_F18.html), UCB 2017
 
 Systems

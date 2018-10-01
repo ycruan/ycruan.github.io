@@ -22,6 +22,6 @@ where I earned my Bachelor's degree in Civil Engineering, and the second Bachelo
 
 News
 ======
-<span style="color:red">[09-2018] I am looking for internship for summer 2019.</span><br />
-[08-2018] The LIONS group moved to the SV campus. #ByePittsburgh#<br />
-[06-2018] I presented our edge caching work at the WIP poster session of the [2018 ACM SIGMETRICS](https://www.sigmetrics.org/sigmetrics2018/) conference in Irvine, CA.
+* <span style="color:red"><b>Sep 2018:</b> I am looking for internship for summer 2019.</span><br />
+* <b>Aug 2018:</b> The LIONS group moved to the SV campus. #ByePittsburgh#<br />
+* <b>Jun 2018:</b> I presented our edge caching work at the WIP poster session of the [2018 ACM SIGMETRICS](https://www.sigmetrics.org/sigmetrics2018/) conference in Irvine, CA.

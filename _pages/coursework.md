@@ -5,7 +5,7 @@ title: "Coursework"
 author_profile: true
 ---
 
-Theory
+Theory & Math
 ======
 * [CS170: Efficient Algorithms and Intractable Problems](https://cs170.org/), UCB 2016
 * [15-853: Algorithms in the "Real World"](http://www.cs.cmu.edu/afs/cs/project/pscico-guyb/realworld/www/indexS18.html), CMU 2018

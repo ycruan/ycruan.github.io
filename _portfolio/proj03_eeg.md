@@ -1,5 +1,5 @@
 ---
-title: "[ML] Pattern Recognition in Brain Waves"
+title: "[ML] Pattern Recognition for Brain Waves"
 excerpt: "<i>Brain waves have been widely used to measure human's physical and mental activities. With the help of
 cutting edge machine learning technologies, we successfully detect two activity patterns from EEG signal: 
 blink and concentration.</i><br/><br/><img src='/images/projects_271_eeg.png'>"

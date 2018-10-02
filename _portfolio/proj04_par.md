@@ -1,7 +1,7 @@
 ---
 title: "[Parallel] Parallel and Distributed Computing"
 excerpt: "<i>This is a collection of parallel and distributed computing projects I did. Level of parallelism varies from
-data level SIMD to thread level OpenMP to Spark/Hadoop based map-reduce.
+data level SIMD to thread level OpenMP to Spark based map-reduce.
 </i><br/><br/><img src='/images/projects_parallel_spark.png' height='300' width='500'>"
 collection: portfolio
 ---
@@ -10,7 +10,7 @@ Parallel and Distributed Computing
 ======
 
 This is a collection of parallel and distributed computing projects I did. Level of parallelism varies from
-data level SIMD to thread level OpenMP to Spark/Hadoop based map-reduce.
+data level SIMD to thread level OpenMP to Spark based map-reduce.
 
 * Project 1: Homemade Numpy ([spec](https://ycruan.github.io/files/61c_project3_numc.htm))
   * Design and implement a slower version of numpy that supports cache-optimized parallel matrix computations.

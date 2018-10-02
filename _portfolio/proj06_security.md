@@ -5,7 +5,7 @@ excerpt: "<i>This is a collection of course projects for Berkeley CS161: Compute
 collection: portfolio
 ---
 
-Introduction to Database Systems
+Computer Security
 ======
 
 This is a collection of course projects for Berkeley CS161: Computer Security (Term: 17 Fall, Grade: A).
@@ -17,7 +17,7 @@ This is a collection of course projects for Berkeley CS161: Computer Security (T
   `rename`, `revoke`, using GoLang.
 
 * Project 3: GFW ([spec](https://ycruan.github.io/files/161_project3_spec.pdf))
-  * Implement `ping` and `traceroute` to inspect the hijacking mechanism of the Chinese GFW.
+  * Implement `ping` and `traceroute` to inspect the hijacking mechanism of the Great Firewall of China.
   * Design and implement an evasion method to send censored information to servers inside the GFW.
 
 Technical tools: C, GoLang, Python, telnet

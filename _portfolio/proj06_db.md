@@ -21,4 +21,4 @@ This is a collection of course projects for Berkeley CS186/286: Introduction to 
   * Create a lock manager for multi-thread concurrent access.
   * Detect and handle potential deadlock.
 
-Technical tools: Java, Maven, JUnit
+Technical tools: Java multithreading, Maven, JUnit

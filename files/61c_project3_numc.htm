@@ -1,0 +1,220 @@
+
+<!-- saved from url=(0051)http://inst.eecs.berkeley.edu/~cs61c/fa17/projs/03/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__inst_eecs_berkeley_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+
+
+<title>Project 3: Optimization</title>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="./61c_project3_numc_files/style.css">
+
+<script language="javascript">
+
+</script>
+
+<!-- <style type="text/css"> -->
+
+	<style type="text/css">
+		table{background:#cdc;border-collapse:collapse;font-family:monospace}td{border:0.125em solid #aba;padding:0.25em}thead{background:#676;color:#fff;text-transform:uppercase}
+    td{font-size: 1.2em;}
+		span.inst{color:#d00}span.rgtr{color:#00a}span.immd{color:#a0a}span.label{color:#666}
+		div.highlight{background:#cdc;padding:1em}
+		span.warn{color:#f00;font-weight:bold;}
+		table.colonly{display:inline-block;vertical-align:top;}table.colonly td{border-top:0em;border-bottom:0em;padding-top:0.1em;padding-bottom:0.1em;}td.center{text-align:center}
+	</style>
+	
+
+</head>
+
+
+
+<body data-gr-c-s-loaded="true">
+
+<div class="header">
+	<div class="header-text">
+	  <h1>CS61C Fall 2017 Project 3: Optimization</h1>
+        TAs: Julian Early and Connor Brennan
+	</div>
+</div>
+
+<div class="content">
+	<p><b>Due Monday, November 20th, 2017 @ 11:59 PM</b></p>
+
+<hr>
+
+  <div class="highlight">
+		<h3>IMPORTANT INFO - PLEASE READ</h3>
+        
+    <ul>
+      <li>You are allowed to complete Project 4 in partners. <strong>Please note - you must create a new Bitbucket repo if you are choosing to work with a partner!</strong></li>    
+      <li><strong>You MUST test this on the hive machines!</strong> The code will probably no compile if you try to use it locally</li>
+      <li>Update 11/12/17 @ 3:00 PM - The Makefile and the make speedup tests have been updated. It should no longer be necessary to run make check again after running make speedup. Additonally, make speedup will now check for correctness. This check will be VERY slow, so if you are confident in your correctness, feel free to skip it. It will occur after telling you your speedup amount.</li>
+      <li>Update 11/12/17 @ 4:45 PM - Updated issue in the Makefile caused by previous update.</li>
+      <li>Update 11/14/17 @ 6:30 PM - Updated make speedup to correctly test correctness with floating point rounding error</li>
+      <li>Update 11/15/17 @ 9:20 AM - Gave make speedup a larger error bound for large values</li>
+    </ul>
+
+	</div>
+
+
+
+<hr>
+
+
+    <h2>Overview</h2>
+    
+    
+    <p>In this project you will be implementing a slower version of <a href="http://www.numpy.org/"><tt>numpy</tt></a>. Your version of <tt>numpy</tt>, <tt>numc</tt> (cause, you know, this is CS61C) will be much slower than <tt>numpy</tt>, but much faster than the naive version, <tt>dumbpy</tt>. It will compile into code that can be run in Python3, and will feel very similar to numpy, however it will not have all of the fancy algorithms and opitmizations of <tt>numpy</tt>. You will be given the naive code and you will need to optimize it to run much faster. Do not expect it to be as good as <tt>numpy</tt>, but you should expect a very large speedup compared to the naive solution.</p>
+
+  <h2>FAQ</h2>
+  <p> As questions are asked, this will be updated. If you ask a question that is answered in the spec or in the FAQ, the staff reserves the right to ignore your question. It is up to you to stay up to date on the FAQ section. This FAQ will also be updated on Piazza.</p>
+  <p><strong>I added SIMD/unrolling/pragma, why did my code get slower?</strong> - Adding these things generally helps speedup your code, but sometimes they add more overhead than they do speed up. If you are running into this issue, double check your implementation, and maybe get rid of it and try something else. You can always come back and put it in later if you think it will help then.</p>
+  <p><strong>How long should it take to run my code?</strong> - The inital code that we give you, with no changes should take about 12 minutes to run <tt>make speedup</tt>. If you're optimization is taking longer than 15 minutes, chances are it isn't working and you should try something else.</p>
+  <p><strong>When I run make, it tells me <tt>No rule to make target</tt>, what should I do?</strong> - You must run all make commands from the root directory of the project. It will not work in any subdirectory</p>
+  <p><strong>There is a warning saying that it cannot uninstall things and/or that it cannot find a conda environment, what should I do?</strong> - Try running <tt>make speedup</tt> once to install the conda virtual environment if you haven't already. Once you have installed the environment, you can ignore any errors along these lines.</p>
+  <p><strong>Are we allowed to import and use packages that we have not talked about in class?</strong> - If they are already installed on the hive machines and the code will compile without adding anything new, please feel free to use the package. Please note that that the staff reserves the right to not help you debug if you use these packages.</p>
+
+<p><strong>The measured speedup from running <tt>make speedup</tt> is much greater than when I run <tt>make check</tt>, which do I trust?</strong>
+The timing is done differently, <tt>make check</tt> is unreliable at measuring speed. <tt>make check</tt> will let you determine the correctness of your matrix operations. The speedup measured by <tt>make speedup</tt> will determine your grade, assuming that <tt>make check</tt> determines that your implementations are correct.</p>
+
+<p><strong>Checking for correctness with <tt>make testAll</tt> and then <tt>make test2</tt> is slow, can I test correctness on smaller matrices first?</strong>
+Yes. If you look in <tt>testing/shared.h</tt>, you'll see two arrays called <tt>row_numbers</tt> and <tt>col_numbers</tt>. During testing started by <tt>make testAll</tt>, random matrices are generated in the dimensions specified by those arrays. For example, matrices of size (mxn) will be generated if <tt>row_numbers[i] == m</tt> and <tt>col_numbers[i] == n</tt> for some i. What <tt>make check</tt> does is perform all the matrix operations possible (based on dimensions matching appropriately) on randomly generated matrices of the specified dimensions. Note, as a cautionary example, that this means that if you don't specify creation of any (mx1) matrices, no outer products will be calculated, which could lead you to believe that your <tt>outer_product</tt> implementation is correct even if it isn't.</p>
+ 
+ <h2>Setting Up</h2>
+
+     <h3>Getting the file</h3>
+     <p> The files are hosted on github. You will need to set up your own repository. Once you have gotten into the folder you want do the project in, run the following:</p>
+     <pre>git init # Only do this if you haven't made this a git repo yet
+git remote add skeleton https://github.com/61c-teach/fa17-proj3-starter.git
+git pull skeleton master # Pull the files to start working</pre>
+
+     <h3>Setting up your repo</h3>
+     <p>If you are working alone, you need to do this, but just do it for only your login. You will need to create a new Bitbucket repository for you and your partner. This should be created in the form: <strong>proj3-(your login)-(partner login)</strong> (example: proj3-aaa-bbb).</p>
+
+     <p>In order to copy over your files into your new directory, run the following steps:</p>
+        <pre>cd proj3-XX                  # Go inside the project directory
+git remote add origin https://USERNAME@bitbucket.org/USERNAME/proj3-XXX-YYY.git
+git push origin master</pre>
+
+   <h2>Getting Started</h2>
+
+   <p>The code you will be modifying for this project is all in the <tt>performance</tt> directory. You can modify both <tt>matrix.c</tt> and <tt>matrix.h</tt>. You may NOT do the following:</p>
+   <ul>
+      <li>Modify function signatures</li>
+      <li>Use preprocessor macros</li>
+      <li>Remove the <tt>shape</tt> struct from the definition of the <tt>matrix</tt> struct</li>
+    </ul>
+    <p>You are allowed to:</p>
+    <ul>
+      <li>Change the struct definition of the <tt>matrix</tt> as long as it continues to include a shape struct called dim</li>
+      <li>Use SIMD and OpenMP to make it run faster. You will need to import the correct headers if you do</li>
+      <li>Add functions to the header and body files</li>
+    </ul>
+
+    <h3>The Assignment</h3>
+    <p>Your job is to make the code in the performance folder run as fast as you can. Specifically you will change <tt>performance/matrix.c</tt> and <tt>performance/matrix.h</tt>. The breakdowns for what speeds give what grades are given at the end of this spec. Please use any and all tricks you know to make it run faster. You may not break the rules that are listed above and the functionality of everything must be the same as the naive version.</p>
+    <p>To test that you are functionally correct, run the following:</p> <pre>make check</pre>
+    <p>After running this once, you can do a faster test in the future with:</p><pre>make test2</pre>
+    <p>This command will give you a speedup, but that is not the speedup that your grade is based on, it is only a preliminary one.</p>
+    <p>Once you have code that is functionally the same, you can check the speedup amount by running: </p><pre>make speedup</pre><p>Do note that this can be pretty slow. It does test your speedup first, so you can kill the process after if you don't wnat to wait for the naive version to run.</p>
+
+  <h2>Tips and Tricks</h2>
+  <p>We recommend you start out by adding loop unrolling and SIMD instructions to your code first. Once you have done that, try out OpenMP. Finally, look at cache blocking for some added performance increase</p>
+  <p>In addition to performing the tricks discussed above, we recommend you look at the way that the data is stored in the struct. You are welcome to change the struct definition, and we encourage it. However, if you do change the struct, you will need to change every function in the <tt>matrix.c</tt> file to work with the new struct. If you do not, you will probably fail some of the tests. If you are ever having seg faults, please make sure that the functionality of the matrix is the same as the naive version.</p>
+
+  <h2>Running the code you wrote in Python3</h2>
+  <p>The code you are writing does get compiled into Python3 code that can be run. Please note that this code is pretty buggy, so please bear with it. If you want to try out the code yourself, you will need to step into the <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">virtual environment</a> we created for this project. The following commands only work after you have run <tt>make speedup</tt> at least once. To do so, run: </p><pre>source activate venv</pre><p>Once you are in your virtual environment, you will need to install the packages. Run this command in the main directory of your project:</p><pre>pip install .</pre><p>Now your package is installed and can be imported. Checkout <tt>testing/speedup.py</tt> for information on how to use the packages.</p>
+  <p>When you are done, you can leave the virtual environment by running:</p><pre>source deactivate</pre>
+
+  <h2>Extra Credit</h2>
+  <p>The extra credit for this project is as follows: you will continue to use your numc code to speedup a neural net. There will be two changes for this extra credit from the rest of the project. The first is that you may modify the <tt>python/numc.c</tt> file that acts a wrapper for the python file. You may not modify the struct declaration inside of this file, but you may modify the implemention of the methods and add more methods as you see fit. Do note that you may not modify the neural net (<tt>nn/letters_neural_net.py</tt>). The second is that the grading will be on the accuracy of your neural net, not on a speedup. You can see your accuracy after you run the makecommand:</p>
+
+    <pre>make ec</pre>
+    <p>You will be graded on the accuracy of the Validation Error. If you get higher accuracy than the staff solution, you will get 1 point of extra credit. From here it will be a competion between students. Whoever has the highest accuracy will get 5 points of extra credit in total (4 for winning and 1 for probably beating the staff solution). Second place will recieve 4 points, and third will recieve 3 points.</p>
+    <p>You will need to fetch the new files to do this, you can do this by pulling from the github repo:</p>
+    <pre>git pull skeleton ec</pre>
+    <p>Finally, you will need to download the data to run the neural net on. You can download it <a href="http://inst.eecs.berkeley.edu/~cs61c/fa17/projs/03/data.zip" download="">here</a></p>
+    <p>To submit, submit performance/matrix.h, performance/matrix.c, and python/numc.c. You must submit separately to enter the contest and be eligible for extra credit. Submit with:</p>
+    <pre>submit proj3-ec</pre>
+    <h2>Submission</h2>
+                
+    <p>There are <strong>two</strong> steps required to submit proj3-2. Failure to perform both steps will result in loss of credit:</p>
+
+    <ol>
+        <li><p>First, you must submit using the standard unix submit program on the instructional servers. This assumes that you followed the earlier instructions and did all of your work inside of your <tt>git</tt> repository. To submit, follow these instructions after logging into your -XX class account:</p>
+
+            <pre>cd ~/proj3-XX                             # Or where your shared git repo is
+submit proj3</pre>
+                
+            <p> Once you type <tt>submit proj3</tt>, follow the prompts generated by the submission system. It will tell you when your submission has been successful and you can confirm this by looking at the output of <tt>glookup -t</tt>.</p>
+            <br>
+        </li>
+
+        <li><p>Additionally, you must submit proj3 to your Bitbucket repository:</p>
+
+            <pre>cd ~/proj3-XXX                             # Or where your shared git repo is
+git add -u                           
+git commit -m "project 3 submission"       # The commit message doesn't have to match exactly.
+git tag "proj3-sub"                        # The tag MUST be "proj3-sub". Failure to do so will result in loss of credit.
+git push origin proj3-sub                  # This tells git to push the commit tagged proj3-sub</pre>
+        </li>
+    </ol>
+
+    <h4>Resubmitting</h4>
+
+    <p>If you need to re-submit, you can follow the same set of steps that you would if you were submitting for the first time, but you will need to use the <tt>-f</tt> flag to tag and push to Bitbucket:</p>
+
+    <pre># Do everything as above until you get to tagging
+git tag -f "proj3-sub"
+git push -f origin proj3-sub</pre>
+
+    <p>Note that in general, force pushes should be used with caution. They will overwrite your remote repository with information from your local copy. As long as you have not damaged your local copy in any way, this will be fine.</p>
+    
+    <h4>Deliverables</h4>
+    <p>These should come from your performance directory</p>
+    <pre>matrix.h<br>matrix.c</pre>
+    
+    <p>If you submit anything else, it will be ignored. Additionally, if your code does not compile, it will recieve a 0. It is on you to make sure it compiles!</p>
+    
+<h2>Grading</h2>
+    
+    <p>This project will be graded based on the amount of speedup that you get. You will not be given an autograder for this project because the test suite that your grade is based on is given to you. When you submit, we will compile your code and run it the same way that you run it when you use <tt>make speedup</tt>. Your grade will be based on the following table:</p>
+    <table>
+      <thead>
+          <tr>
+              <td>Speed Up Amount</td>
+              <td>Score (as percentage)</td>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td> &lt;= 1x</td>
+              <td>0</td>
+          </tr>
+          <tr>
+              <td> ~5x</td>
+              <td>50</td>
+          </tr>
+          <tr>
+              <td> ~10x</td>
+              <td>75</td>
+          </tr>
+          <tr>
+              <td> ~15x</td>
+              <td>90</td>
+          </tr>
+          <tr>
+              <td> &gt;= 20x </td>
+              <td>100</td>
+          </tr>
+      </tbody>
+  </table>
+  <p>Note that the inital speedups are worth the most. Later speedups will be worth less.</p>
+  <p>You should test on the hive machines, but keep in mind that others will also be doing so, and when many processes are running at once, you may not see an accurate reflection of how much you've sped up the code. Unfortunately it's difficult to work around the fact that there are orders of magnitude more students than Hive machines. When we grade your submissions we will ensure that no one else is using the hive machine. Keep in mind that your code may perform (modestly) better during grading. To figure out what machine will be best to use to test, checkout <a href="http://aguo.us/hivemind/">hivemind</a></p>
+  
+  <p>Good luck!</p>
+    
+</div>
+
+
+</body></html>

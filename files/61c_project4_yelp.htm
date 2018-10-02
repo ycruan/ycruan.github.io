@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://inst.eecs.berkeley.edu/~cs61c/fa17/projs/04/ -->
+<html class="gr__inst_eecs_berkeley_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+
+<link rel="stylesheet" type="text/css" ,="" media="screen" href="./61c_project4_yelp_files/style.css">
+    <style type="text/css">
+        table{background:#cdc;border-collapse:collapse;font-family:monospace}td{border:0.125em solid #aba;padding:0.25em}thead{background:#676;color:#fff;text-transform:uppercase}
+    td{font-size: 1.2em;}
+        span.inst{color:#d00}span.rgtr{color:#00a}span.immd{color:#a0a}span.label{color:#666}
+        div.highlight{background:#cdc;padding:1em}
+        span.warn{color:#f00;font-weight:bold;}
+        table.colonly{display:inline-block;vertical-align:top;}table.colonly td{border-top:0em;border-bottom:0em;padding-top:0.1em;padding-bottom:0.1em;}td.center{text-align:center}
+    </style>
+<title>Project 4: MapReduce and Spark</title>
+
+</head>
+
+<body data-gr-c-s-loaded="true">
+<div class="header">
+  <h1>CS61C Fall 2017 Project 4: Predicting Yelp Review Ratings with Spark</h1>
+  <br>
+  <big>TA: Dylan Dreyer</big><br>
+  <big>Due 12/04 @ 23:59:59</big>
+</div>
+
+<div class="content">
+
+    <h2>Updates and clarifications</h2>
+    <ul>
+      <li><b>11/24 6:46 pm:</b> Removed last transformation of classify() and fixed one comment typo 
+      </li><li><b>11/24 9:50 pm:</b> It may make more sense to split on all whitespace, but since Yelp reviews are written by real people, their typos and extra whitespace may actually be indicative of their sentiment (the extra whitespace count is differentiating between the joints and boosting the accuracy of our implementation). Accordingly, please split on a single space (str.split(" ")) instead of all whitespace (str.split())
+      </li><li><b>11/24 9:53 pm:</b> Updated staff debug output to be consistent with splitting on one whitespace
+    </li></ul>
+
+    <h2>Goals</h2>
+    <p>In this project, you will use the MapReduce programming paradigm to parallelize a simple Naive Bayes classifier with a Bag of Words model in Spark to predict Yelp review ratings.
+
+    </p><h2>Getting Started</h2>
+    <h3>Logistics</h3>
+    <ul>
+      <li>You may work with a partner or alone for this project.
+      </li><li>We highly recommend that you use the Hive machines so that your development of your project uses the same environment we will be grading in.
+    </li></ul>
+    
+
+    <h3>Setup</h3>
+    <p>Intialize your repository and get the skeleton code files by entering the following commands:</p>
+    <pre class="output">$ <span class="input">git clone https://mybitbucketusername@bitbucket.org/mybitbucketusername/proj4-xxx-yyy.git/</span>
+$ <span class="input">cd proj4-xxx-yyy</span>
+$ <span class="input">git remote add proj4-starter https://github.com/61c-teach/fa17-proj4-starter.git</span>
+$ <span class="input">git fetch proj4-starter</span>
+$ <span class="input">git merge proj4-starter/master -m "merge proj4 skeleton code"</span></pre>
+
+
+    <p>Also, you need to set up a virtual environment for this project. To do this, run: </p>
+    <pre class="output">$ <span class="input">conda create --name proj4env python=2.7 </span></pre>
+    <p> Respond to the prompt to install packages with "y" (no quotes). After these install, run the following command to activate the virtual environment: </p>
+    <pre class="output">$ <span class="input">source activate proj4env </span></pre>
+
+    <p><b> Remember, every time you want to work on the project, you must activate the virtual environment in order to run Spark. </b></p>
+
+
+    <p>If you are not familiar with Spark, read <a href="http://spark.apache.org/docs/latest/programming-guide.html" target="_blank">this programming guide</a>, especially the section on Resilient Distributed Datasets (RDDs) and on RDD Operations. 
+
+    </p><h2>Background</h2>
+    <p> In this project, we will be classifying and predicting the "stars" of a large Yelp <a href="https://www.yelp.com/dataset/documentation/json" target="_blank">dataset</a>. The dataset contains lots of various information on Yelp reviews, but we are focused on classifying the review text into star "bins". We will be classifying reviews into 3 bins for this project: 1, 3, and 5 stars. To simplify the classification process and to improve accuracy, we have already taken the raw JSON data and grouped the reviews into the 3 bins. To do this, we took the actual star rating given to the review, and grouped it according to the following rules: 4-5 star -&gt; 5 star, 2-4 star -&gt; 3 star, 0-2 star -&gt; 1 star. This is definitely not the best way to group the data, but we chose this for simplicity.</p>
+
+    <p> There are many machine learning models/techniques for text classification. Perhaps the simplest (and most surprisingly effective) is a Naive Bayes classification with a Bag of Words model for text. </p>
+
+    <h3> tl;dr </h3>
+    <ol>
+      <li> (Training) We will calculate the likelihood of a word occuring in reviews of each possible number of stars: <br><b> P(word | num_stars) = (1 + # of times word appears in reviews with num_stars) / (1 + # of words total in reviews with num_stars)</b><br> We will do this for every word that occurs in the group of reviews with num_stars, for all possible number of stars. </li>
+      <li> (Training) We will calculate the prior probability of a review with num_stars occuring, for all possible numbers of stars: <b> P(num_stars) = # of reviews with num_stars / # of reviews total </b>.</li>
+      <li> (Classification) Given a review (word1, word2, word3,...), for all possible numbers of stars, we will calculate the joint probability <b> P(num_stars, word1, word2, word3...) = P(num_stars) P(word1|num_stars) P(word2|num_stars) P(word3|num_stars)...</b>. Our prediction for the number of stars for the review is then the num_stars that has the highest joint probability. </li>
+    </ol>
+
+    <h3> Bag of Words </h3>
+    <p> When thinking about the relationship of words in a sentence to their sentiment or meaning, the sequence of the words seems like a likely factor. However, the Bag of Words text model ignores the ordering of words, and instead considers each word independently. A word in a document (or a review in our case) is represented only by the number of times it appears in the document and nothing else (none of ordering, the word's part of speech, or common phrases is considered).
+
+    </p><p> For example, if we had a review "This restaurant is amazing! The best. The food is never bad.", then it would be represented as:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>Count</th> 
+        </tr>
+      </thead>
+      <tbody><tr>
+        <td>this</td>
+        <td>1</td> 
+      </tr>
+        <tr>
+        <td>restaurant</td>
+        <td>1</td> 
+      </tr>
+        <tr>
+        <td>is</td>
+        <td>2</td> 
+      </tr>
+        <tr>
+        <td>amazing</td>
+        <td>1</td> 
+      </tr>
+        <tr>
+        <td>the</td>
+        <td>2</td> 
+      </tr>
+        <tr>
+        <td>best</td>
+        <td>1</td> 
+      </tr>
+        <tr>
+        <td>food</td>
+        <td>1</td> 
+      </tr>
+        <tr>
+        <td>never</td>
+        <td>1</td> 
+      </tr>
+        <tr>
+        <td>bad</td>
+        <td>1</td> 
+      </tr>
+    </tbody></table>
+
+    <p> You might think that this representation of text is fairly naive ("never bad" is a lot different than "bad" for instance), but it works surpisingly well. </p>
+
+    <h3> Naive Bayes </h3>
+
+    <p> Next, we'll understand the machine learning classifier we'll be using for this task. Given some data <b>X</b>, Naive Bayes attempts to predict the probability <b>P(Y|X)</b> that the data has a label <b>Y</b>, otherwise known as the posterior probability. (In our case, given the text of a review, we are trying to predict the number of stars that review gave.) In order to calculate this posterior probability, Baye's Rule is applied: <b> P(Y|X) = [P(X|Y)P(Y)] / P(X) </b>. However, in practice, although the posterior probability is desired, it is actually proportional to the joint probability <b> P(Y, X) </b>, which is more easily calculated; thus, Naive Bayes ultimately attempts to estimate <b> P(Y, X) = P(X|Y)P(Y) </b>. With this goal of estimating <b>P(Y, X)</b>, Naive Bayes then tries to estimate <b>P(X|Y)</b> and <b>P(Y)</b> given some set of training data and labels. In our case, our Naive Bayes classifier will be given a training set, the words in the review (data) and the star rating of the reviews that the words appear in (label), and then estimate <b>P(word | star rating of the review it appears in)</b> and <b>P(star rating)</b> (e.g. P("awesome" | it appeared in a 5 star review) and P(5 star review).</p>
+
+    <p> To train our Naive Bayes Classifier, we will estimate <b> P(X|Y)</b>, otherwise known as the likelihood, as <b> P(word | num_stars) = # of times word appears in reviews with num_stars / # of words total in reviews with num_stars</b>. To estimate <b> P(Y) </b>, otherwise known as the prior, we will estimate it as <b> P(num_stars) = # of reviews with num_stars / # of reviews total </b>. </p>
+
+    <p> For example, say we only had four reviews: ("I hate the food.", 1 star), ("The food is good.", 3 stars), ("Service is good.", 3 stars), and ("I love the good food.", 5 stars). Since there are two reviews with three stars, and four reviews total, the prior probability of a review being three stars is <b> P(3 stars) = 2/4</b>. The same calculations would then be done for one star and five stars, such that we have a table that maps a star rating to its prior probability. For estimating likelihoods, we would estimate the likelihood of "good", given that we know it appeared in a 3 stars review, as <b>P("good" | 3 stars) =  2 appearances of "good" in three star reviews / 7 words total over all three star reviews = 2/7</b>. This calculation would be repeated for every other word that appears at least once in a three stars review, and similarly for the words in one star and five stars reviews. In the end, we would then have a likelihood table for each possible number of stars, where each table maps a word to its likelihood given that table's number of stars. The full prior and likelihood tables (concatenated together for brevity) are shown below:</p>
+
+    <h4> Priors </h4>
+    <table>
+      <thead>
+        <tr>
+          <th>P(1 star)</th> 
+          <th>P(3 stars)</th> 
+          <th>P(5 stars)</th> 
+        </tr>
+      </thead>
+      <tbody><tr>
+        <td>1/4</td>
+        <td>2/4</td>
+        <td>1/4</td> 
+      </tr>
+  </tbody></table>
+    <h4> Likelihoods </h4>
+    <table>
+      <thead>
+        <tr>
+          <th>word</th>
+          <th>P(word|1 star)</th> 
+          <th>P(word|3 stars)</th> 
+          <th>P(word|5 stars)</th> 
+        </tr>
+      </thead>
+      <tbody><tr>
+        <td>I</td>
+        <td>1/4</td>
+        <td>0</td>
+        <td>1/5</td> 
+      </tr>
+      <tr>
+        <td>hate</td>
+        <td>1/4</td>
+        <td>0</td>
+        <td>0</td> 
+      </tr>
+        <tr>
+        <td>the</td>
+        <td>1/4</td>
+        <td>1/7</td>
+        <td>1/5</td> 
+      </tr>
+        <tr>
+        <td>food</td>
+        <td>1/4</td>
+        <td>1/7</td>
+        <td>1/5</td> 
+      </tr>
+        <tr>
+        <td>is</td>
+        <td>0</td>
+        <td>2/7</td>
+        <td>0</td> 
+      </tr>
+        <tr>
+        <td>good</td>
+        <td>0</td>
+        <td>2/7</td>
+        <td>1/5</td> 
+      </tr>
+            <tr>
+        <td>service</td>
+        <td>0</td>
+        <td>1/7</td>
+        <td>0</td> 
+        </tr><tr>
+        <td>love</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1/5</td> 
+      </tr>
+  </tbody></table>
+
+    <p> Now, for classification. If a Naive Bayes Classifier classifies an unlabeled datum, <b>X</b>, then for all possible labels, <b> Y = y1, y2, y3...</b>, the joint probabilities <b> P(Y=y1, X), P(Y=y2, X), P(Y=y3, X)...</b> are all calculated, and then the datum is classified as the label corresponding to the greatest joint probability. Specifically, the joint probability is calculated as <b>P(Y=y, X) = P(Y=y)P(x_1 | Y=y)P(x_2 | Y=y) P(x_3 | Y=y)...</b>, where Naive Bayes makes the independence assumption that the probabilities of each <b>x_i</b> are independent given the label <b>y</b>. In our case, our labels are 1, 3, and 5 stars, and each datum is a single review, with each word in the review corresponding to an <b>x_i</b>. </p>
+
+    <p> More concretely, suppose that we have the same four reviews as earlier, and would like to now predict the number of stars corresponding to the review, "Good food!". For each possible number of stars, we would calculate the probability of that number, given this review, as <b> P(num_stars, "good", "food") =  P(num_stars) * P("good" | num_stars) * P("food" | num_stars) </b>. For each of our star ratings:</p>
+    <ul>
+      <li> P(1 star, "good", "food") = (1/4) * (0) * (1/4) = 0</li>
+      <li> P(3 stars, "good", "food") = (2/4) * (2/7) * (1/7) = 1/49</li>
+      <li> P(5 stars, "good", "food") = (1/4) * (1/5) * (1/5) = 1/100</li>
+    </ul>
+
+    <p> Since the joint probability of the review being "Good food!" and being 3 stars is the greatest, Naive Bayes would classify this review as giving 3 stars.</p>
+
+    <p> Lastly, for our task, we will handle a common problem of using Naive Bayes classification. Suppose we were to classify, "The price is good". To calculate the probability that this review is 3 stars, we would calculate <b> P(3 stars, "the", "price", "is", "good") = P(3 stars) [P("the"|3 stars) * P("price"|3 stars) * P("is"|3 stars) * P("good"|3 stars) = (2/4) * (1/7) * (0) * (2/7) * (2/7) = 0</b> . Since one word, "price", was never found in a 3 star review, the joint probability for this review and a 3 star rating was calculated as zero--despite this review having almost all words that also occur in 3 star reviews. To fix this issue, our Naive Bayes classifier will use Laplace Smoothing, a fancy sounding term for calculating the likelihood as <b> P(word|num_stars) = (1 + # of times word appears in reviews with num_stars) / (1 + # of words total in reviews with num_stars) </b>. This way, words like "price" that are never found in the training set of reviews will be assigned a very small nonzero likelihood instead of zero.</p>
+
+    <p> Additionally, multiplying many floating point numbers runs into precision problems (do you remember why?). To handle this, our implementation of classification will take the log of our likelihoods and priors, and add them together (instead of multiplying the likelihoods and priors themselves). </p>
+
+    <h2> Your Task </h2>
+    <p>Your task will be to fill in some of the functionality of the Naive Bayes classifier. All of the code for the Naive Bayes classifier is in <tt>classifier/yelpClassifier.py</tt>. The parts for you to fill in are clearly marked. Take some time to understand the main driver functions <tt>train</tt> and <tt>classify</tt> and all of the comments in the file.</p> You are welcome to come up with your own framework for the classifier if you choose. However, we will only be accepting code in <tt>classifier/yelpClassifier.py</tt>. If your code has any other dependencies and/or does not work together with <tt>run-classifier.py</tt>, it will not work and you will lose points. <p></p>
+
+    <p>The driver Python file is <tt>run-classifier.py</tt>. Feel free to modify this file to debug, but remember that none of your changes to this file will be used when grading.</p>
+
+    <h3>Testing</h3>
+    <p> There will be no autograder for this project. We are releasing the output of the staff <tt>train</tt> and <tt>classify</tt> functions to a <tt>sample</tt> dataset. This <tt>sample</tt> dataset contains 10 reviews for training and 3 reviews for classification. Feel free to use this to help you debug the output of each part of your implementation. When run on the <tt>sample</tt> dataset, <tt>run-classifier.py</tt> will automatically generate output in <tt>your_debug_output.txt</tt>, compare it to the reference staff output given in <tt>staff_debug_output.txt</tt>, and print out any diffs in <tt>debug_diffs.txt</tt>. Do realize that because it is such a small set of data, do not worry about accuracy. You can run this sample using: </p>
+    <pre class="output">$ <span class="input">spark-submit run-classifier.py sample</span></pre>
+    <p>Once you have implemented all of the missing parts, we have three sample datasets for you to test out. They are located in <tt>~cs61c/data/yelp-data/yelp-reviews-(train|test)-(small|medium|large).txt</tt>. Each line of every file is in the format <tt>review_id num_stars review_text</tt>, with <tt>num_stars</tt> being either 1, 3, or 5. You can run your Spark code on each dataset by using the command:
+    </p><pre class="output">$ <span class="input">spark-submit run-classifier.py (small|medium|large) </span></pre>
+
+    <p>The dataset breakdown is as follows:
+    </p><table>
+      <thead>
+          <tr>
+            <th> Dataset </th>
+            <th> # Reviews for Training  </th> 
+            <th> # Reviews for Testing </th>
+            <th> Staff Accuracy </th>
+            <th> Staff Timing </th>
+          </tr>
+        </thead>
+      <tbody><tr>
+        <td>small</td>
+        <td>1200</td>
+        <td>400</td> 
+        <td>45%</td>
+        <td>several seconds</td>
+      </tr>
+        <tr>
+        <td>medium</td>
+        <td>30,000</td>
+        <td>10,000</td> 
+        <td>69%</td>
+        <td>~1 minute</td>
+      </tr>
+        <tr>
+        <td>large</td>    
+        <td>1,625,389</td>
+        <td>541,796</td> 
+        <td>70%</td>
+        <td>~20 minutes</td>
+    </tr></tbody></table>
+    
+    <p>The small dataset should run very quickly, so you should use this to test your implementation and make sure it matches the staff benchmarks. The large dataset (which is significantly larger than the medium dataset) is for you to run once you match the staff benchmarks for the small and medium datasets. You should only run the large dataset when you think you have finished because it will use up a lot of your time and a lot of the Hive computing resources. If your implementation does better than the staff accuracy, great! However, please note that we will be setting time limits. That is, if your accuracy is matching (or better than) the staff accuracy but is significantly slower than our implementation, this will not pass the grader.</p>
+
+    <p>Grading will be simple for this project. We will run your implementation on a set of Yelp reviews not released. If it matches (or exceeds) the staff accuracy and does not take significantly longer to run, you will get full points. If you match the staff benchmark for the three datasets, you should be confident that your code will also match the staff on the unreleased dataset. Partial credit will be given out as follows:
+      </p><ul>
+        <li>20% for a compiling implementation</li> 
+        <li>20% for non-zero accuracy </li> 
+        <li>20% for correct <tt>calculate_num_reviews_and_words_per_num_stars</tt> </li>
+        <li>20% for correct <tt>calculate_likelihoods</tt> </li> 
+        <li> 20% for correct <tt>classify_reviews</tt> </li>
+      </ul>
+      For the last three items, we will test these functions in isolation to award partial credit. <p></p>
+
+
+    <h3> Reminder: </h3>
+
+    <b>We will only be accepting <tt>classifier/yelpClassifier.py</tt>. If you make any changes to any other file, including <tt>run-classifier.py</tt>, it will not be included in grading.</b>
+
+
+    <h2>Submission and Grading</h2>
+    <p>Congratulations! You just used Spark to provide some insight into a huge Yelp dataset. Yelp even puts out a <a href="https://www.yelp.com/dataset/challenge" target="_blank">challenge</a> to any person interested in using tools such as Spark to analyze their data. Feel free to check it out.</p>
+    
+    <p>To submit, run: </p>
+    <pre class="output">$ <span class="input">submit proj4</span></pre>
+    <p>You should only submit <tt>classifier/yelpClassifier.py</tt>. Anyting else will be overwritten.
+    </p><p>In addition, you should submit to your bitbucket repository as well.
+    </p><pre class="output">$ <span class="input">cd proj4-XXX-YYY</span>
+$ <span class="input">git add classifier/yelpClassifier.py</span>
+$ <span class="input">git commit -m "proj4 submission"</span>
+$ <span class="input">git tag -f "proj4-sub"</span>
+$ <span class="input">git push origin proj4 --tags</span></pre>
+</div></body></html>

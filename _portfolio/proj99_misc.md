@@ -1,6 +1,6 @@
 ---
 title: "[Misc] More projects"
-excerpt: "<i>For more projects, please visit my GitHub</i>
+excerpt: "<i>For more projects, please visit my GitHub</i>"
 collection: portfolio
 ---
 

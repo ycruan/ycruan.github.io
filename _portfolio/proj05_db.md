@@ -1,7 +1,7 @@
 ---
 title: "[DB] Introduction to Database Systems"
 excerpt: "<i>This is a collection of course projects for Berkeley CS186/286: Introduction to Database Systems (Term: 16 Fall, Grade: A).
-</i><br/><br/><img src='/images/projects_286_db.png' height='300', width='500'>"
+</i><br/><br/><img src='/images/projects_286_db.png' height='300' width='500'>"
 collection: portfolio
 ---
 

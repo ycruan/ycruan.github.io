@@ -36,7 +36,7 @@ Publications
 
 Skills
 ======
-* Programming Languages: C, C++, C#, Java, Python, SQL, JavaScript, Matlab
+* Programming Languages: C, C++, C#, Java, Python, SQL, JavaScript, Matlab, GoLang
 * Parallel/Distributed Computing: Hadoop, Spark, OpenMP, Terraform
 * Machine Learning: PyTorch, Keras, SciKits, NumPy, Pandas, CVX
 * Others: Bash, Git, Maven, Vim, GDB, GNU Make, Postgres, LaTeX

@@ -1,6 +1,6 @@
 ---
 title: "[Parallel] Parallel and Distributed Computing"
-excerpt: "<i>This is a collection of parallel and distributed computing projects I did. Level of parallelism vary from
+excerpt: "<i>This is a collection of parallel and distributed computing projects I did. Level of parallelism varies from
 data level SIMD to thread level OpenMP to Spark/Hadoop based map-reduce.
 </i><br/><br/><img src='/images/projects_parallel_spark.png' height='300' width='500'>"
 collection: portfolio

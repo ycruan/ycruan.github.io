@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Welcome to my homepage!
+Welcome to my site!
 ======
 
 My name is Yichen Ruan, people also call me Ethan. I am currently a Ph.D. student in the [LIONS](https://www.andrew.cmu.edu/user/cjoewong/) 

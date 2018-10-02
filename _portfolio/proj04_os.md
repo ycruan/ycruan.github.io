@@ -1,7 +1,7 @@
 ---
 title: "[OS] Operating Systems and Systems Programming"
 excerpt: "<i>This is a collection of course projects and homework for Berkeley CS162: Operating Systems and Systems Programming (Term: 17 Spring, Grade: A).
-</i><br/><br/><img src='/images/projects_162_os.png'>"
+</i><br/><br/><img src='/images/projects_162_os.png' height='300' width='500'>"
 collection: portfolio
 ---
 

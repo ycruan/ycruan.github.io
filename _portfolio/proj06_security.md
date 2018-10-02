@@ -1,7 +1,7 @@
 ---
 title: "[Security] Computer Security"
 excerpt: "<i>This is a collection of course projects for Berkeley CS161: Computer Security (Term: 17 Fall, Grade: A).
-</i><br/><br/><img src='/images/projects_161_security.png'>"
+</i><br/><br/><img src='/images/projects_161_security.png' height='300' width='500'>"
 collection: portfolio
 ---
 

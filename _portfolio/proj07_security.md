@@ -10,7 +10,7 @@ Computer Security
 
 This is a collection of course projects for Berkeley CS161: Computer Security (Term: 17 Fall, Grade: A).
 * Project 1: Overflows ([spec](https://ycruan.github.io/files/161_project1_spec.pdf))
-  * Inject shellcode to a x86 Linux VM exploiting format string overflow, off-by-one-byte attack and ret2esp attack.
+  * Inject shellcode to a x86 Linux VM exploiting format string overflow, off-by-one-byte vulnerability and ret2esp vulnerability.
 
 * Project 2: Encrypted Cloud Drive ([spec](https://ycruan.github.io/files/161_project2_spec.pdf))
   * Design and implement a encrypted cloud drive that supports file `store`, `load`, `edit`, `append`, `share`, `receive`, 

@@ -13,7 +13,7 @@ This is a collection of course projects for Berkeley CS161: Computer Security (T
   * Inject shellcode to a x86 Linux VM exploiting format string overflow, off-by-one-byte vulnerability and ret2esp vulnerability.
 
 * Project 2: Encrypted Cloud Drive ([spec](https://ycruan.github.io/files/161_project2_spec.pdf))
-  * Design and implement a encrypted cloud drive that supports file `store`, `load`, `edit`, `append`, `share`, `receive`, 
+  * Design and implement an encrypted cloud drive that supports file `store`, `load`, `edit`, `append`, `share`, `receive`, 
   `rename`, `revoke`, using GoLang.
 
 * Project 3: GFW ([spec](https://ycruan.github.io/files/161_project3_spec.pdf))

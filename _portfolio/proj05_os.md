@@ -22,7 +22,7 @@ This is a collection of course projects and homework for Berkeley OS course CS16
 * Project 3: File Systems ([spec](https://ycruan.github.io/files/162_project3_spec.pdf), [design doc](https://ycruan.github.io/files/162_project3_design.md))
   * Design and implement a buffer cache for most recent used pages;
   * A extensible file system with subdirectories;
-  * More file system syscalls: 'chdir', 'mkdir', 'readdir', and 'isdir' that support both absolute and relative path.
+  * More file system syscalls: `chdir`, `mkdir`, `readdir`, and `isdir` that support both absolute and relative path.
 
 * Homework 1: Shell ([spec](https://ycruan.github.io/files/162_homework1_spec.pdf))
   * Build a shell that supports path resolution, program exec, io redirect, signal handling, foreground/background switching.

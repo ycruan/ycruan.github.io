@@ -11,10 +11,11 @@ redirect_from:
 
 Education
 ======
-* Ph.D. in Electrical and Computer Engineering, Carnegie Mellon University, since 2018
+* Ph.D. in Electrical and Computer Engineering, Carnegie Mellon University, since Jan 2018
 * M.S. in Systems Engineering, UC Berkeley, 2016 - 2017
 * B.S. in Civil Engineering, Tsinghua University, 2012 - 2016
 * Second Bachelor's Degree in Economics, Tsinghua University, 2014 - 2016
+
 
 Experience
 ======
@@ -37,6 +38,8 @@ Publications
 Skills
 ======
 * Programming Languages: C, C++, C#, Java, Python, SQL, JavaScript, Matlab, GoLang
-* Parallel/Distributed Computing: Hadoop, Spark, OpenMP, Terraform
+* Parallel/Distributed Computing: Hadoop, Spark, OpenMP, SIMD, Terraform
 * Machine Learning: PyTorch, Keras, SciKits, NumPy, Pandas, CVX
 * Others: Bash, Git, Maven, Vim, GDB, GNU Make, Postgres, LaTeX
+
+Download link: [cv](https://ycruan.github.io/files/CV_professional.pdf).

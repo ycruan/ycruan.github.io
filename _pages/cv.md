@@ -42,4 +42,4 @@ Skills
 * Machine Learning: PyTorch, Keras, SciKits, NumPy, Pandas, CVX
 * Others: Bash, Git, Maven, Vim, GDB, GNU Make, Postgres, LaTeX
 
-Download link: [cv](https://ycruan.github.io/files/CV_professional.pdf).
+Download link: [CV](https://ycruan.github.io/files/CV_professional.pdf)

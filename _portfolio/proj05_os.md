@@ -28,7 +28,7 @@ This is a collection of course projects and homework for Berkeley CS162: Operati
   * Build a shell that supports path resolution, program exec, io redirect, signal handling, and foreground/background switching.
 
 * Homework 2: HTTP Server ([spec](https://ycruan.github.io/files/162_homework2_spec.pdf))
-  * Build a server that receives, processes and responses to HTTP GET requests.
+  * Build a server that receives, processes and responds to HTTP GET requests.
 
 * Homework 3: Malloc ([spec](https://ycruan.github.io/files/162_homework3_spec.pdf))
   * Implements `malloc`, `free` and `realloc`.

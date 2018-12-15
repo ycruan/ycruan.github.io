@@ -22,6 +22,7 @@ where I earned my Bachelor's degree in Civil Engineering, and the second Bachelo
 
 News
 ======
-* <span style="color:red"><b>Sep 2018:</b> I am looking for internship for summer 2019.</span><br />
+* <span style="color:red"><b>Dec 2018:</b> I am looking for internship for summer 2019.</span><br />
+* <b>Dec 2018:</b> I won the David Barakat and LaVerne Owen-Barakat Fellowship for Ph.D. research in CMU ECE.
 * <b>Aug 2018:</b> The LIONS group moved to the SV campus. #ByePittsburgh#<br />
 * <b>Jun 2018:</b> I presented our edge caching work at the WIP poster session of the [2018 ACM SIGMETRICS](https://www.sigmetrics.org/sigmetrics2018/) conference in Irvine, CA.

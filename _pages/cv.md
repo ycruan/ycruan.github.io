@@ -34,6 +34,12 @@ Publications
 * **Y. Ruan**, L. Zheng, M. Gorlatova, M. Chiang and C. Joe-Wong, The Economics of Fog Computing: Pricing Tradeoffs for Data Analytics, to appear in Fog and Fogonomics: Challenges and Practices of Fog Computing, Networking, Strategy and Economics, Wiley, 2018.
 
 
+Awards
+======
+* 2018: David Barakat and LaVerne Owen-Barakat Fellowship, CMU CIT
+* 2018: ACM SIGMETRICS Student Travel Grant
+
+
 Skills
 ======
 * Programming Languages: C, C++, C#, Java, Python, SQL, JavaScript, Matlab, GoLang

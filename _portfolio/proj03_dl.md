@@ -8,7 +8,7 @@ collection: portfolio
 Introduction to Deep Learning
 ======
 
-This is a collection of homework course and projects for CMU 11785: Introduction to Deep Learning (Term: 18 Fall).
+This is a collection of homework and course projects for CMU 11785: Introduction to Deep Learning (Term: 18 Fall).
 * Homework 1: Frame Level Classification of Speech ([spec](https://www.kaggle.com/c/11-785hw1p2-f18))
   * Build from scratch a MLP class supporting `backprob`, `batchnorm`, `softmax` and `momentum`, using only Numpy.
   * Identify the phoneme state label for WSJ utterance frames using MLP.
@@ -17,7 +17,7 @@ This is a collection of homework course and projects for CMU 11785: Introduction
   * Determining whether two speech segments were uttered by the same speaker.
   * Extract speaker embeddings from utterances using `CNN`, followed by dense layers to train with` N-way classification`.
 
-* Homework 3: Seq2Seq Phonemes Prediction ([spec](https://www.kaggle.com/c/Fall-11-785-homework-3-part-2#CTC))
+* Homework 3: Seq2Seq Phonemes Prediction ([spec](https://www.kaggle.com/c/Fall-11-785-homework-3-part-2))
   * Build a `Seq2Seq` model for phonemes prediction of unaligned utterance data.
   * Incorporate into the model the `CTC loss` and `beam search` decoder.
 

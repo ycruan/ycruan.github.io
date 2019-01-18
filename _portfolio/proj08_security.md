@@ -1,6 +1,6 @@
 ---
 title: "[Security] Computer Security"
-excerpt: "<i>This is a collection of course projects for Berkeley CS161: Computer Security (Term: 17 Fall, Grade: A).
+excerpt: "<i>This is a collection of course projects for Berkeley CS161: Computer Security (Term: 17 Fall).
 </i><br/><br/><img src='/images/projects_161_security.png' height='300' width='500'>"
 collection: portfolio
 ---
@@ -8,7 +8,7 @@ collection: portfolio
 Computer Security
 ======
 
-This is a collection of course projects for Berkeley CS161: Computer Security (Term: 17 Fall, Grade: A).
+This is a collection of course projects for Berkeley CS161: Computer Security (Term: 17 Fall).
 * Project 1: Overflows ([spec](https://ycruan.github.io/files/161_project1_spec.pdf))
   * Inject shellcode to a x86 Linux VM exploiting format string overflow, off-by-one-byte vulnerability and ret2esp vulnerability.
 

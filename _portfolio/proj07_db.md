@@ -1,6 +1,6 @@
 ---
 title: "[DB] Introduction to Database Systems"
-excerpt: "<i>This is a collection of course projects for Berkeley CS186/286: Introduction to Database Systems (Term: 16 Fall, Grade: A).
+excerpt: "<i>This is a collection of course projects for Berkeley CS186/286: Introduction to Database Systems (Term: 16 Fall).
 </i><br/><br/><img src='/images/projects_286_db.png' height='300' width='500'>"
 collection: portfolio
 ---
@@ -8,7 +8,7 @@ collection: portfolio
 Introduction to Database Systems
 ======
 
-This is a collection of course projects for Berkeley CS186/286: Introduction to Database Systems (Term: 16 Fall, Grade: A).
+This is a collection of course projects for Berkeley CS186/286: Introduction to Database Systems (Term: 16 Fall).
 * Project 1: File Management and B+ Tree ([spec](https://ycruan.github.io/files/286_project1_spec.pdf))
   * Design and implement the `table` and `schema` class that supports addition, deletion, search, update and iteration of entries;
   * and a B+ tree data structure for key-value storage of pages.

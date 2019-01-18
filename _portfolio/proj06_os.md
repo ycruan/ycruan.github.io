@@ -1,6 +1,6 @@
 ---
 title: "[OS] Operating Systems and Systems Programming"
-excerpt: "<i>This is a collection of course projects and homework for Berkeley CS162: Operating Systems and Systems Programming (Term: 17 Spring, Grade: A).
+excerpt: "<i>This is a collection of course projects and homework for Berkeley CS162: Operating Systems and Systems Programming (Term: 17 Spring).
 </i><br/><br/><img src='/images/projects_162_os.png' height='300' width='500'>"
 collection: portfolio
 ---
@@ -8,7 +8,7 @@ collection: portfolio
 Operating Systems and Systems Programming
 ======
 
-This is a collection of course projects and homework for Berkeley CS162: Operating Systems and Systems Programming (Term: 17 Spring, Grade: A).
+This is a collection of course projects and homework for Berkeley CS162: Operating Systems and Systems Programming (Term: 17 Spring).
 * Project 1: Threads ([spec](https://ycruan.github.io/files/162_project1_spec.pdf), [design doc](https://ycruan.github.io/files/162_project1_design.md))
   * Design and implement an alarm clock without using busy waiting;
   * and a priority scheduler that supports priority donation;

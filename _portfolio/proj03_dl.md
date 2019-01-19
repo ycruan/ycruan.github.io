@@ -22,7 +22,7 @@ This is a collection of homework and course projects for CMU 11785: Introduction
   * Incorporate into the model the `CTC loss` and `beam search` decoder.
 
 * Homework 4: Attention-based End-to-End Speech-to-Text Deep Neural Network ([spec](https://ycruan.github.io/files/785_hw4_spec.pdf))
-  * Implement the character based Listen, Attend and Speak ([LAS](https://arxiv.org/abs/1508.01211)) model to translate utterances to corresponding text transcripts.
+  * Implement the character based Listen, Attend and Spell ([LAS](https://arxiv.org/abs/1508.01211)) model to translate utterances to corresponding text transcripts.
   * The listener consists of a `pyramidal bi-LSTM` network that produce attention keys and values. The decoder is an `LSTM` that 
     yields sequential outputs.
 

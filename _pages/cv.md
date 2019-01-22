@@ -36,7 +36,8 @@ Publications
 
 Awards
 ======
-* 2018: David Barakat and LaVerne Owen-Barakat Fellowship, CMU CIT
+* 2019: Ann and Martin McGuinn Graduate Fellowship, CMU ECE
+* 2018: David Barakat and LaVerne Owen-Barakat Fellowship, CMU ECE
 * 2018: ACM SIGMETRICS Student Travel Grant
 
 

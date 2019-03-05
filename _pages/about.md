@@ -22,7 +22,6 @@ where I earned my Bachelor's degree in Civil Engineering, and the second Bachelo
 
 News
 ======
-* <span style="color:red"><b>Dec 2018:</b> I am looking for internship for summer 2019.</span><br />
 * <b>Jan 2019:</b> I received the Ann and Martin McGuinn Graduate Fellowship from CMU ECE.<br />
 * <b>Dec 2018:</b> I received the David Barakat and LaVerne Owen-Barakat Fellowship for Ph.D. research in CMU ECE.<br />
 * <b>Jun 2018:</b> I presented our edge caching work at the WIP poster session of the [2018 ACM SIGMETRICS](https://www.sigmetrics.org/sigmetrics2018/) conference in Irvine, CA.

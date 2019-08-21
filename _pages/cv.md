@@ -18,19 +18,26 @@ Education
 
 Experience
 ======
-* Fall 2017: Teaching Assistant
-  * UC Berkeley, CS
-  * Duties included: Grading homework, helping with office hours
-  * Course: CS170 Efficient Algorithms and Intractable Problems
+* Fall 2019: Teaching Assistant - CMU, ECE
+  * Course: 18661 Introduction to Machine Learning for Engineers
 
-* Summer 2015: Research Assistant
-  * Georgia Institute of Technology, CEE
-  * Duties included: FEM modeling, experiments, data analysis
+* Summer 2019: Intern Technical PHD - PayPal, San Jose
+  * Team: Core data platform
+  * Project: Adaptive load balancing of database proxies
+  * Highlights: Linux kernel, Asynchronous I/O, Golang
+
+* Fall 2017: Teaching Assistant - UC Berkeley, CS
+  * Course: CS170 Efficient Algorithms and Intractable Problems
+  * Duties: Grading homework, helping with office hours
+
+* Summer 2015: Research Assistant - GaTech, CEE
+  * Duties: FEM modeling, experiments, data analysis
   * Advisor: Prof. Yang Wang
 
 
 Publications
 ======
+* **Ruan, Yichen**, and Carlee Joe-Wong. "On the Economic Value of Vehicular Caching." ACM SIGMETRICS Performance Evaluation Review 46.2 (2019): 83-84.
 * **Y. Ruan**, L. Zheng, M. Gorlatova, M. Chiang and C. Joe-Wong, The Economics of Fog Computing: Pricing Tradeoffs for Data Analytics, to appear in Fog and Fogonomics: Challenges and Practices of Fog Computing, Networking, Strategy and Economics, Wiley, 2018.
 
 
@@ -43,7 +50,7 @@ Awards
 
 Skills
 ======
-* Programming Languages: C, C++, C#, Java, Python, SQL, JavaScript, Matlab, GoLang
+* Programming Languages: C, C++, C#, Java, GoLang, Python, SQL, JavaScript, Matlab
 * Parallel/Distributed Computing: Hadoop, Spark, OpenMP, SIMD, Terraform
 * Machine Learning: PyTorch, Keras, SciKits, NumPy, Pandas, CVX
 * Others: Bash, Git, Maven, Vim, GDB, GNU Make, Postgres, LaTeX

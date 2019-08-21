@@ -22,7 +22,7 @@ where I earned my Bachelor's degree in Civil Engineering, and the second Bachelo
 
 News
 ======
-* <b>May 2019:</b> Start my 3-month internship at PayPal in San Jose.
+* <b>May to Aug 2019:</b> I worked as Intern Technical PHD at PayPal in San Jose.<br />
 * <b>Jan 2019:</b> I received the Ann and Martin McGuinn Graduate Fellowship from CMU ECE.<br />
 * <b>Dec 2018:</b> I received the David Barakat and LaVerne Owen-Barakat Fellowship for Ph.D. research in CMU ECE.<br />
 * <b>Jun 2018:</b> I presented our edge caching work at the WIP poster session of the [2018 ACM SIGMETRICS](https://www.sigmetrics.org/sigmetrics2018/) conference in Irvine, CA.

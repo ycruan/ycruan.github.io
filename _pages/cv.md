@@ -20,6 +20,7 @@ Experience
 ======
 * Fall 2019: Teaching Assistant - CMU, ECE
   * Course: 18661 Introduction to Machine Learning for Engineers
+  * Responsibilities: Hosting recitation sections and office hours, preparing and grading homework and exams
 
 * Summer 2019: Intern Technical PHD - PayPal, San Jose
   * Team: Core data platform
@@ -31,7 +32,7 @@ Experience
   * Duties: Grading homework, helping with office hours
 
 * Summer 2015: Research Assistant - GaTech, CEE
-  * Duties: FEM modeling, experiments, data analysis
+  * Responsibilities: FEM modeling, experiments, data analysis
   * Advisor: Prof. Yang Wang
 
 
@@ -55,4 +56,4 @@ Skills
 * Machine Learning: PyTorch, Keras, SciKits, NumPy, Pandas, CVX
 * Others: Bash, Git, Maven, Vim, GDB, GNU Make, Postgres, LaTeX
 
-Download link: [CV](https://ycruan.github.io/files/CV_professional.pdf).
+Download: [CV](https://ycruan.github.io/files/CV_professional.pdf).

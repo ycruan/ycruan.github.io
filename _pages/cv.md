@@ -29,7 +29,7 @@ Experience
 
 * Fall 2017: Teaching Assistant - UC Berkeley, CS
   * Course: CS170 Efficient Algorithms and Intractable Problems
-  * Duties: Grading homework, helping with office hours
+  * Responsibilities: Grading homework, helping with office hours
 
 * Summer 2015: Research Assistant - GaTech, CEE
   * Responsibilities: FEM modeling, experiments, data analysis

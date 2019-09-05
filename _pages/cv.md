@@ -54,6 +54,6 @@ Skills
 * Programming Languages: C, C++, C#, Java, GoLang, Python, SQL, JavaScript, Matlab
 * Parallel/Distributed Computing: Hadoop, Spark, OpenMP, SIMD, Terraform
 * Machine Learning: PyTorch, Keras, SciKits, NumPy, Pandas, CVX
-* Others: Bash, Git, Maven, Vim, GDB, GNU Make, Postgres, LaTeX
+* Others: Bash, Git, Maven, Vim, Postgres, LaTeX
 
 Download: [CV](https://ycruan.github.io/files/CV_professional.pdf).

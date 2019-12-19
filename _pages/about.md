@@ -22,6 +22,8 @@ where I earned my Bachelor's degree in Civil Engineering, and the second Bachelo
 
 News
 ======
+* <b>Dec 2019:</b> <span style="color:red">I'm currently looking for internship for summer 2020.</span><br />
+* <b>Dec 2019:</b> Our paper *On the Economic Value of Mobile Caching* is accepted by IEEE INFOCOM 2020!<br />
+* <b>Dec 2019:</b> I will TA the ECE course 18665 Advanced Probability & Statistics for Engineers in Spring 2020.<br />
+* <b>Aug 2019:</b> I will TA the ECE course 18661 Introduction to Machine Learning for Engineers in Fall 2019.<br />
 * <b>Jan 2019:</b> I received the Ann and Martin McGuinn Graduate Fellowship from CMU ECE.<br />
-* <b>Dec 2018:</b> I received the David Barakat and LaVerne Owen-Barakat Fellowship for Ph.D. research in CMU ECE.<br />
-* <b>Jun 2018:</b> I presented our edge caching work at the WIP poster session of the [2018 ACM SIGMETRICS](https://www.sigmetrics.org/sigmetrics2018/) conference in Irvine, CA.

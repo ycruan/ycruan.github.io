@@ -35,13 +35,6 @@ Experience
   * Responsibilities: FEM modeling, experiments, data analysis
   * Advisor: Prof. Yang Wang
 
-
-Publications
-======
-* **Ruan, Yichen**, and Carlee Joe-Wong. "On the Economic Value of Vehicular Caching." ACM SIGMETRICS Performance Evaluation Review 46.2 (2019): 83-84.
-* **Y. Ruan**, L. Zheng, M. Gorlatova, M. Chiang and C. Joe-Wong, The Economics of Fog Computing: Pricing Tradeoffs for Data Analytics, to appear in Fog and Fogonomics: Challenges and Practices of Fog Computing, Networking, Strategy and Economics, Wiley, 2018.
-
-
 Awards
 ======
 * 2019: Ann and Martin McGuinn Graduate Fellowship, CMU ECE

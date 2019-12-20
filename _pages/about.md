@@ -11,7 +11,7 @@ redirect_from:
 Welcome to my site!
 ======
 
-My name is Yichen Ruan, people also call me Ethan. I am currently a Ph.D. student in the [LIONS](https://research.ece.cmu.edu/lions/index.html) 
+My name is Yichen Ruan, people also call me Ethan. I am currently a Ph.D. candidate in the [LIONS](https://research.ece.cmu.edu/lions/index.html) 
 research group at the [Department of Electrical and Computer Engineering](https://www.ece.cmu.edu/), Carnegie Mellon University. 
 My advisor is [Prof. Carlee Joe-Wong](https://www.andrew.cmu.edu/user/cjoewong/). My research interests include fog computing, federated edge machine learning, 
 and resource allocation in networked systems.

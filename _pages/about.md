@@ -22,7 +22,6 @@ where I earned my Bachelor's degree in Civil Engineering, and the second Bachelo
 
 News
 ======
-* <b>Dec 2019:</b> <span style="color:red">I'm currently looking for internship for summer 2020.</span><br />
 * <b>Dec 2019:</b> Our paper *On the Economic Value of Mobile Caching* is accepted by IEEE INFOCOM 2020!<br />
 * <b>Dec 2019:</b> I will TA 18665 Advanced Probability & Statistics for Engineers in Spring 2020.<br />
 * <b>Aug 2019:</b> I will TA 18661 Introduction to Machine Learning for Engineers in Fall 2019.<br />

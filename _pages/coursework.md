@@ -23,3 +23,5 @@ Machine Learning
 * [10-701: Introduction to Machine Learning (PhD)](https://www.cs.cmu.edu/~pradeepr/701/), CMU 2018
 * [10-702: Statistical Machine Learning](http://www.stat.cmu.edu/~larry/=sml/), CMU 2018
 * [11-785: Introduction to Deep Learning](http://deeplearning.cs.cmu.edu/), CMU 2018
+* [10-703: Deep RL and Control](https://cmudeeprl.github.io/703website/), CMU 2020
+* [10-708: Probabilistic Graphical Models](http://www.cs.cmu.edu/~pradeepr/708/), CMU 2020

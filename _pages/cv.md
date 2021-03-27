@@ -18,18 +18,21 @@ Education
 
 Experience
 ======
+* Summer 2020: Software Engineering Intern - Google, Sunnyvale
+  * Team: Knowledge Engine
+  * Project: Building a chatbot for a Google's internal service
+  * Highlights: C++, Protobuf
+  
+* Spring 2020: Teaching Assistant - CMU, ECE
+  * Course: 18665 Advanced Probability & Statistics for Engineers
+  
 * Fall 2019: Teaching Assistant - CMU, ECE
   * Course: 18661 Introduction to Machine Learning for Engineers
-  * Responsibilities: Hosting recitation sections and office hours, preparing and grading homework and exams
 
 * Summer 2019: Intern Technical PHD - PayPal, San Jose
   * Team: Core data platform
   * Project: Adaptive load balancing of database proxies
   * Highlights: Linux kernel, Asynchronous I/O, Golang
-
-* Fall 2017: Teaching Assistant - UC Berkeley, CS
-  * Course: CS170 Efficient Algorithms and Intractable Problems
-  * Responsibilities: Grading homework, helping with office hours
 
 * Summer 2015: Research Assistant - GaTech, CEE
   * Responsibilities: FEM modeling, experiments, data analysis
@@ -37,6 +40,7 @@ Experience
 
 Awards
 ======
+* 2020: IEEE INFOCOM Student Conference Grant
 * 2019: Ann and Martin McGuinn Graduate Fellowship, CMU ECE
 * 2018: David Barakat and LaVerne Owen-Barakat Fellowship, CMU ECE
 * 2018: ACM SIGMETRICS Student Travel Grant

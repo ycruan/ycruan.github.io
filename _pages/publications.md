@@ -16,11 +16,11 @@ Networking, Strategy and Economics*, Wiley, 2018.
 
 Conference
 ------
-**Yichen Ruan** and Carlee Joe-Wong, *On the Economic Value of Mobile Caching*, 
-to appear in IEEE INFOCOM 2020. [[PDF](https://ycruan.github.io/papers/economic-caching.pdf)][[ACM SIGMETRICS Poster](https://ycruan.github.io/papers/economic-caching-poster.pdf)]
+**Yichen Ruan**, Xiaoxi Zhang, Shu-Che Liang and Carlee Joe-Wong, *Towards Flexible Device Participation in Federated Learning*, to appear in AISTATS 2021. [[PDF](https://arxiv.org/abs/2006.06954)]
+
+**Yichen Ruan** and Carlee Joe-Wong, *On the Economic Value of Mobile Caching*, IEEE INFOCOM 2020. [[PDF](https://ycruan.github.io/papers/economic-caching.pdf)][[ACM SIGMETRICS Poster](https://ycruan.github.io/papers/economic-caching-poster.pdf)]
 
 
 Yuwei Tu, **Yichen Ruan**, Satyavrat Wagle, Christopher G. Brinton and 
-Carlee Joe-Wong, *Network-Aware Optimization of Distributed Learning for Fog Computing*
- to appear in IEEE INFOCOM 2020. [[PDF](https://ycruan.github.io/papers/net-aware-fog-computing.pdf)]
+Carlee Joe-Wong, *Network-Aware Optimization of Distributed Learning for Fog Computing*, IEEE INFOCOM 2020. [[PDF](https://ycruan.github.io/papers/net-aware-fog-computing.pdf)]
  
